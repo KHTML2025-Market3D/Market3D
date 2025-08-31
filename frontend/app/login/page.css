@@ -1,0 +1,153 @@
+:root{
+  --bg: var(--color-bg, #f8fafc);
+  --fg: var(--color-text, #111827);
+  --muted: var(--color-text-subtle, #667085);
+  --primary: var(--color-primary, #4f8cff);
+  --on-primary: var(--color-on-primary, #ffffff);
+  --surface: var(--color-surface, #ffffff);
+  --ring: var(--color-ring, #9db7ff);
+  --radius: 22px;
+  --shadow-sm: 0 1px 2px rgba(16,24,40,.06), 0 1px 1px rgba(16,24,40,.04);
+  --shadow-md: 0 8px 24px rgba(16,24,40,.12);
+  --motion: 200ms cubic-bezier(.22,.61,.36,1);
+  --motion-slow: 900ms cubic-bezier(.16,.84,.44,1);
+  --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Noto Sans KR, Apple SD Gothic Neo, "Malgun Gothic", Arial, sans-serif;
+}
+
+html, body{
+  margin: 0;
+  font-family: var(--font);
+  color: var(--fg);
+  background:
+    radial-gradient(900px 380px at -10% -20%, rgba(79,140,255,.10), transparent 60%),
+    radial-gradient(700px 320px at 110% 0%, rgba(255,199,220,.16), transparent 60%),
+    var(--bg);
+}
+
+main.Login{
+  min-height: 72vh;
+  display: grid;
+  place-items: center;
+  padding: 40px 16px;
+  perspective: 900px;
+}
+
+.Card{
+  width: min(480px, 92vw);
+  background: var(--surface);
+  border: 1px solid rgba(16,24,40,.06);
+  border-radius: 28px;
+  box-shadow: var(--shadow-md);
+  padding: clamp(22px, 3vw, 30px);
+  transform-style: preserve-3d;
+  animation: pop var(--motion-slow) both;
+  position: relative;
+}
+
+.Card::before{
+  content:"";
+  position:absolute;
+  inset:-1px;
+  border-radius: inherit;
+  pointer-events:none;
+  background:
+    radial-gradient(36% 52% at 18% -8%, rgba(79,140,255,.18), transparent 60%),
+    radial-gradient(40% 60% at 100% 0%, rgba(255,199,220,.18), transparent 60%);
+  filter: blur(8px);
+  transform: translateZ(-40px);
+  z-index:-1;
+}
+
+.Header{
+  display:grid;
+  justify-items:center;
+  gap:10px;
+  margin-bottom: 14px;
+  text-align:center;
+}
+
+.Mark{
+  width:56px;height:56px;border-radius:20px;
+  display:grid;place-items:center;
+  background:
+    radial-gradient(120% 120% at 0% 0%, #fff8, transparent 60%),
+    linear-gradient(135deg, #ffd9e8, #cfe3ff);
+  box-shadow: 0 8px 20px rgba(16,24,40,.10);
+  transform: translateZ(8px);
+  animation: bob 3.6s ease-in-out infinite alternate;
+  font-size:22px;
+}
+
+.Title{
+  margin:0;
+  font-weight: 900;
+  font-size: clamp(22px, 3vw, 26px);
+  letter-spacing:.2px;
+}
+
+.Sub{
+  margin:0;
+  color: var(--muted);
+  font-size: clamp(14px, 2.4vw, 16px);
+}
+
+.Actions{
+  display:grid;
+  gap:14px;
+  margin-top:18px;
+}
+
+.GoogleBtn{
+  appearance:none;border:0;cursor:pointer;
+  display:grid;grid-template-columns:26px 1fr auto;align-items:center;gap:12px;
+  width:100%;
+  min-height:56px;
+  padding:14px 18px;
+  border-radius:999px;
+  background:#fff;
+  color:#111827;
+  font-weight:800;font-size:16px;letter-spacing:.1px;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--motion), box-shadow var(--motion), filter var(--motion), background var(--motion);
+  transform: translateZ(0);
+  position:relative;
+}
+
+.GoogleBtn:hover{
+  transform: translateY(-1px) translateZ(8px);
+  box-shadow: 0 14px 34px rgba(16,24,40,.14);
+}
+
+.GoogleBtn:active{
+  transform: translateY(0) translateZ(0) scale(.99);
+  box-shadow: var(--shadow-sm);
+}
+
+.GoogleBtn:focus-visible{
+  outline:3px solid var(--ring);
+  outline-offset:3px;
+}
+
+.GoogleBtn .Arrow{
+  font-size:18px;
+  opacity:.55;
+  transform: translateX(0);
+  transition: transform var(--motion), opacity var(--motion);
+}
+
+.GoogleBtn:hover .Arrow{ transform: translateX(2px); opacity:.8; }
+
+.GIcon{ width:24px;height:24px;display:grid;place-items:center; }
+
+@keyframes pop{
+  from{ opacity:0; transform: translateY(12px) rotateX(1.5deg); }
+  to{ opacity:1; transform: translateY(0) rotateX(0deg); }
+}
+@keyframes bob{
+  from{ transform: translateY(0) translateZ(8px) rotateZ(-2deg); }
+  to{ transform: translateY(-4px) translateZ(8px) rotateZ(2deg); }
+}
+
+@media (prefers-reduced-motion: reduce){
+  *{ animation:none !important; transition:none !important; transform:none !important; }
+}

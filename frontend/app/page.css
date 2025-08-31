@@ -1,0 +1,172 @@
+:root {
+  --bg-1: #ffffff;
+  --bg-2: #f7fbff;
+  --bg-3: #fff6f0;
+  --panel: #ffffff;
+  --ink: #1f2937;
+  --muted: #6b7280;
+  --border: #e9eef5;
+  --accent: #3b82f6;
+  --shadow: 0 1px 6px rgba(15, 23, 42, 0.06);
+}
+
+/* 페이지 배경: 밝은 파스텔 그라데이션 3겹 */
+.Page {
+  max-width: 920px;
+  margin: 40px auto;
+  padding: 16px;
+  color: var(--ink);
+  background:
+    radial-gradient(1200px 620px at 15% -10%, #ffffff 0%, #f3f8ff 60%, transparent 72%),
+    radial-gradient(1000px 560px at 85% -15%, #ffffff 0%, #fff3ec 55%, transparent 72%),
+    linear-gradient(180deg, var(--bg-1) 0%, var(--bg-2) 50%, var(--bg-1) 100%);
+  background-attachment: fixed, fixed, fixed;
+}
+
+/* 상단 */
+.Toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.Title {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+.NewBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: var(--accent);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  box-shadow: var(--shadow);
+  transition: opacity .15s ease, transform .15s ease;
+}
+.NewBtn:hover { transform: translateY(-1px); }
+.NewBtn:active { transform: translateY(0); opacity: .9; }
+
+/* 검색영역: 하얀 그라데이션 패널(평평하게) */
+.SearchBar {
+  margin: 12px 0 18px;
+  padding: 12px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background:
+    linear-gradient(180deg, #ffffff 0%, #fcfdff 100%);
+  box-shadow: var(--shadow);
+}
+.SearchInput {
+  width: 100%;
+  padding: 12px 44px 12px 14px;
+  font-size: 15px;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  color: var(--ink);
+  border-radius: 12px;
+  outline: none;
+  transition: box-shadow .15s ease, border-color .15s ease;
+}
+.SearchInput:focus {
+  border-color: color-mix(in srgb, var(--accent) 45%, var(--border));
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 14%, transparent);
+}
+.ClearBtn {
+  position: absolute;
+  right: 22px;
+  top: 50%;
+  translate: 0 -50%;
+  border: none;
+  background: transparent;
+  font-size: 22px;
+  line-height: 1;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+/* 안내/오류 */
+.Hint { opacity: .75; padding: 8px 2px; font-size: 14px; }
+.Error {
+  color: #dc2626;
+  padding: 10px 2px;
+  white-space: pre-wrap;
+  border-left: 3px solid #dc2626;
+  background: color-mix(in srgb, #dc2626 8%, transparent);
+  border-radius: 6px;
+}
+
+/* 목록 래퍼: 하얀 부드러운 그라데이션 캔버스 */
+.Grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  list-style: none;
+  padding: 16px;
+  margin: 0;
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  background:
+    radial-gradient(1200px 680px at 50% -40px, #ffffff 0%, #fbfdff 60%, transparent 100%),
+    linear-gradient(180deg, #ffffff 0%, #fcfdff 100%);
+  box-shadow: var(--shadow);
+}
+@media (min-width: 780px) { .Grid { grid-template-columns: 1fr 1fr; } }
+
+/* 카드: 떠보이지 않게 평평한 스타일 */
+.Card {
+  border: 1px solid var(--border);
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  transition: border-color .15s ease;
+}
+.Card:hover {
+  border-color: color-mix(in srgb, var(--accent) 35%, var(--border));
+}
+.CardLink {
+  display: block;
+  padding: 14px;
+  text-decoration: none;
+  color: inherit;
+}
+.CardHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+}
+.CardTitle {
+  font-weight: 800;
+  font-size: 18px;
+  letter-spacing: -0.01em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.CardMeta { font-size: 12px; opacity: .7; white-space: nowrap; }
+.CardSub {
+  margin-top: 4px;
+  font-size: 13px;
+  color: var(--muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.CardBody {
+  margin-top: 8px;
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--ink);
+  opacity: .9;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

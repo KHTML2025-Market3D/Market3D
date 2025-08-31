@@ -1,0 +1,247 @@
+:root {
+  --ig-bg: #fafafa;
+  --ig-card: #fff;
+  --ig-text: #262626;
+  --ig-subtle: #8e8e8e;
+  --ig-border: #dbdbdb;
+  --ig-blue: #0095f6;
+  --ig-blue-hover: #1877f2;
+  --ig-link: #00376b;
+}
+
+html, body {
+  background: radial-gradient(1200px 800px at 10% -20%, #e9f0ff 0%, transparent 60%),
+              radial-gradient(1000px 900px at 110% 10%, #ffeef3 0%, transparent 55%),
+              var(--ig-bg);
+  animation: ambientShift 18s ease-in-out infinite alternate;
+  min-height: 100%;
+}
+
+@keyframes ambientShift {
+  0% { background-position: 0 0, 0 0, 0 0; }
+  100% { background-position: -60px -30px, 40px 20px, 0 0; }
+}
+
+.dark {
+  --ig-bg: #0a0a0a;
+  --ig-card: #111;
+  --ig-text: #eaeaea;
+  --ig-subtle: #a1a1a1;
+  --ig-border: #262626;
+  --ig-blue: #3797f0;
+  --ig-blue-hover: #4aa2f3;
+  --ig-link: #77a7ff;
+  background: radial-gradient(1200px 800px at 10% -20%, rgba(77,91,124,.18) 0%, transparent 60%),
+              radial-gradient(1000px 900px at 110% 10%, rgba(124,77,98,.18) 0%, transparent 55%),
+              var(--ig-bg);
+}
+
+body, button, input, textarea {
+  color: var(--ig-text);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+}
+
+hr { border: none; border-top: 1px solid var(--ig-border); opacity: .8; }
+
+div[style*="grid-template-columns"] > div:first-child { animation: fadeUp .6s ease both; }
+aside { animation: fadeUp .7s ease .05s both; }
+
+@keyframes fadeUp { from { transform: translateY(6px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+/* IG-like IntroCard */
+aside > div:nth-of-type(2) > div:first-child {
+  display: grid !important;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  background: var(--ig-card);
+  border: 1px solid var(--ig-border);
+  border-bottom: none;
+  border-radius: 16px 16px 0 0;
+  position: relative;
+}
+aside > div:nth-of-type(2) > div:first-child::before {
+  content: "";
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #ffd29d 0%, #ff7aa2 30%, #9c71ff 65%, #5fb1ff 100%);
+  border: 1px solid var(--ig-border);
+}
+aside > div:nth-of-type(2) > div:first-child h4 { font-size: 14px !important; font-weight: 700; margin: 0; }
+aside > div:nth-of-type(2) > div:first-child::after { content: "⋯"; font-size: 22px; line-height: 1; color: var(--ig-subtle); justify-self: end; }
+aside > div:nth-of-type(2) > div:first-child button {
+  background: var(--ig-blue) !important; color: #fff !important; border: none !important;
+  padding: 6px 10px !important; border-radius: 8px !important; font-weight: 600;
+  transition: transform .05s ease, background .15s ease;
+}
+aside > div:nth-of-type(2) > div:first-child button:hover { background: var(--ig-blue-hover) !important; }
+aside > div:nth-of-type(2) > div:first-child button:active { transform: translateY(1px); }
+aside > div:nth-of-type(2) > div:nth-of-type(2) {
+  padding: 8px 12px 0; color: var(--ig-subtle) !important; font-size: 12px;
+  border-left: 1px solid var(--ig-border); border-right: 1px solid var(--ig-border); background: var(--ig-card);
+}
+aside > div:nth-of-type(2) > div:nth-of-type(3) {
+  background: var(--ig-card); border: 1px solid var(--ig-border); border-top: none; border-radius: 0 0 16px 16px;
+  padding: 14px 16px !important; line-height: 1.7 !important; max-height: 48vh; overflow: auto;
+  scrollbar-width: thin; scrollbar-color: var(--ig-subtle) transparent;
+}
+
+/* IntroCard replica */
+.IntroCard .intro-head {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  background: var(--ig-card);
+  border: 1px solid var(--ig-border);
+  border-bottom: none;
+  border-radius: 16px 16px 0 0;
+  position: relative;
+}
+.IntroCard .intro-head::before {
+  content: "";
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #ffd29d 0%, #ff7aa2 30%, #9c71ff 65%, #5fb1ff 100%);
+  border: 1px solid var(--ig-border);
+}
+.IntroCard .intro-head h4 { font-size: 14px; font-weight: 700; margin: 0; }
+.IntroCard .intro-head::after { content: "⋯"; font-size: 22px; line-height: 1; color: var(--ig-subtle); justify-self: end; }
+.IntroCard .intro-head button {
+  background: var(--ig-blue);
+  color: #fff;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: transform .05s ease, background .15s ease;
+}
+.IntroCard .intro-head button:hover { background: var(--ig-blue-hover); }
+.IntroCard .intro-head button:active { transform: translateY(1px); }
+
+.IntroCard .intro-status {
+  padding: 8px 12px 0;
+  color: var(--ig-subtle);
+  font-size: 12px;
+  border-left: 1px solid var(--ig-border);
+  border-right: 1px solid var(--ig-border);
+  background: var(--ig-card);
+}
+
+.IntroCard .intro-body {
+  background: var(--ig-card);
+  border: 1px solid var(--ig-border);
+  border-top: none;
+  border-radius: 0 0 16px 16px;
+  padding: 14px 16px !important;
+  line-height: 1.7 !important;
+  max-height: 48vh;
+  overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--ig-subtle) transparent;
+  font-size: 2rem;
+}
+
+aside > div:nth-of-type(4) {
+  background: var(--ig-card);
+  border: 1px solid var(--ig-border);
+  border-radius: 16px;
+  padding: 12px;
+}
+
+aside h3, aside h4 { color: var(--ig-text); }
+aside button[disabled] { opacity: .6; cursor: not-allowed; }
+
+aside > div:nth-of-type(2) > div:nth-of-type(3)::-webkit-scrollbar { height: 8px; width: 8px; }
+aside > div:nth-of-type(2) > div:nth-of-type(3)::-webkit-scrollbar-thumb { background: var(--ig-subtle); border-radius: 999px; }
+
+/* ---------- 상품 카드 (이미지 호버 미리보기) ---------- */
+.ProductsCard {
+  background: var(--ig-card);
+  border: 1px solid var(--ig-border);
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+.products-head {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--ig-border);
+}
+.products-head h4 { margin: 0; font-size: 14px; }
+
+/* 더 크게! */
+.products-preview {
+  display: grid; place-items: center;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--ig-border);
+  min-height: 520px;              /* 160px -> 220px */
+  background: color-mix(in srgb, var(--ig-border) 18%, transparent);
+}
+.products-preview img {
+  max-width: 100%;
+  max-height: 500px;              /* 220px -> 320px */
+  border-radius: 10px;
+  border: 1px solid var(--ig-border);
+  object-fit: contain;
+}
+.preview-empty { color: var(--ig-subtle); font-size: 12px; }
+
+.products-body {
+  padding: 8px 8px 10px;
+  max-height: 36vh;
+  overflow: auto;
+}
+.products-list {
+  list-style: none; padding: 0; margin: 0; display: grid; gap: 6px;
+}
+.ProductItem {
+  display: grid; grid-template-columns: 1fr auto; gap: 10px;
+  align-items: center;
+  padding: 8px 10px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  transition: background .15s ease, border-color .15s ease;
+}
+.ProductItem:hover, .ProductItem.is-hover {
+  background: color-mix(in srgb, var(--ig-border) 16%, transparent);
+  border-color: var(--ig-border);
+}
+.ProductItem .pi-left .pi-name { font-weight: 600; }
+.ProductItem .pi-left .pi-time { font-size: 12px; color: var(--ig-subtle); }
+.ProductItem .pi-right { font-weight: 700; }
+
+@media (max-width: 960px) {
+  html, body { background: var(--ig-bg); }
+  aside { padding: 0 4px !important; }
+  .IntroCard .intro-body { max-height: none; }
+  .products-preview { min-height: 200px; }
+  .products-preview img { max-height: 280px; }
+}
+
+/* ---------- Markdown 내용 ---------- */
+.md-body h1, .md-body h2, .md-body h3 { font-weight: 700; font-size: 16px; margin: 0.8rem 0 0.4rem; line-height: 1.4; }
+.md-body h4, .md-body h5, .md-body h6 { font-weight: 700; font-size: 14px; margin: 0.6rem 0 0.3rem; }
+.md-body p { margin: 0.4rem 0; font-size: 1.2rem; line-height: 1.7; }
+.md-body ul, .md-body ol { margin: 0.4rem 0 0.6rem 1.2rem; }
+.md-body li { margin: 0.2rem 0; }
+.md-body a { color: var(--ig-link); text-decoration: none; }
+.md-body a:hover { text-decoration: underline; }
+.md-body blockquote { margin: .6rem 0; padding: .6rem .8rem; border-left: 3px solid var(--ig-border); background: color-mix(in srgb, var(--ig-border) 18%, transparent); border-radius: 8px; }
+.md-body pre { background: color-mix(in srgb, var(--ig-border) 22%, transparent); padding: .6rem .8rem; border-radius: 10px; overflow: auto; font-size: 12px; }
+.md-body code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Noto Sans Mono", monospace; background: color-mix(in srgb, var(--ig-border) 22%, transparent); padding: .12rem .32rem; border-radius: 6px; font-size: 12px; }
+
+/* 마크다운 내 이미지도 안전하게 */
+.md-body img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  border: 1px solid var(--ig-border);
+  margin: .6rem 0;
+}
+
+/* 인라인 span 스타일을 막지 않도록 기본 상속 보장 */
+.md-body span { font: inherit; }
