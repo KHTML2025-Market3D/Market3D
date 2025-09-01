@@ -74,7 +74,6 @@ APP_BACKEND_CORS_ORIGINS=http://localhost:3000
 | Key Name                          | Description                                                                                 |
 | --------------------------------- | ------------------------------------------------------------------------------------------- |
 | `BACKEND_URL`                     | 연결된 BE 서버의 외부 URL                                                                   |
-| `API_SECRET`                      | BE 서버에서 처리되는 API KEY                                                                |
 | `GOOGLE_CLIENT_ID`                | 구글 OAuth 애플리케이션으로 등록된 ID (하단의 `Google Auth 2.0 관리` 참조)                  |
 | `GOOGLE_CLIENT_SECRET`            | 구글 OAuth 애플리케이션의 secret (하단의 `Google Auth 2.0 관리` 참조)                       |
 | `NEXTAUTH_SECRET`                 | NextAuth 에 사용될 secret, 임의로 생성함 (하단의 `next auth 설정` 참조)                     |
